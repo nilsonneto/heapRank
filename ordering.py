@@ -78,6 +78,11 @@ def efficiency(rList):
     return precision, recall
 
 
+def maybeSort(line):
+    # adapt to get not value, but key[0]
+    return True
+
+
 if __name__ == "__main__":
     maxS = 1400
     numReRanks = 1
