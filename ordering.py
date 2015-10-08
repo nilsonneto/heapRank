@@ -1,7 +1,18 @@
-__author__ = 'nilso'
+from math import log2, ceil
 from operator import itemgetter
 
-def getFile(num=0):
+
+__author__ = 'nilso'
+
+
+def printf(toprint):
+    f = open("results.txt", "a+")
+    f.write(str(toprint))
+    f.write("\n")
+    f.close()
+
+
+def getfile(num=0):
     return open({
         0: "MPEG7ImagesList.txt",
         1: "AIRPreOpt.txt",
@@ -10,77 +21,103 @@ def getFile(num=0):
         4: "CFDPreOpt.txt",
         5: "IDSCPreOpt.txt",
         6: "SSPreOpt.txt",
+        7: "test.txt",
     }.get(num), 'r')
 
 
-def toMatrix(f):
+def tomatrix(file):
     matrix = []
-    for line in iter(f.readline, ''):
-        lineList = []
+    for line in iter(file.readline, ''):
+        linelist = []
         for idx, val in enumerate(line.split()):
-            lineList.append([float(val), idx])
-        matrix.append(lineList)
+            linelist.append([float(val), idx])
+        matrix.append(linelist)
     return matrix
 
 
-def heapD(t1, t2, k):
-    for each in t1[:k]:
-        for each2 in t2[:k]:
-            True
-    return 0
+def heapd(t1, t2, maxnum):
+    heap1 = t1[1:maxnum]
+    heap2 = t2[1:maxnum]
+
+    maxh = ceil(log2(len(heap1)))
+    heights = list(range(1, maxh+1, 2))
+    peso = list(reversed(range(1, maxh+1)))
+    sumtotal = 0
+    sumweight = 0
+    lastindex = 0
+
+    for h in heights:
+        numelem = pow(2, h)
+        if h + 1 <= maxh:
+            numelem += pow(2, h+1)
+        numelem += lastindex
+        intersect = 0
+
+        # print(h, lastindex, numelem, intersect, sumtotal)
+
+        if (numelem + lastindex) > len(heap1):
+            numelem = len(heap1) - lastindex
+
+        # calcular # of intersection
+        for ele1 in heap1[lastindex:numelem]:
+            for ele2 in heap2[lastindex:numelem]:
+                if ele1[1] == ele2[1]:
+                    intersect += 1
+                    break
+
+        lastindex = int(numelem)
+        sumtotal += (intersect * peso[h-1])
+        sumweight += peso[h-1]
+
+        # print(h, lastindex, numelem, intersect, sumtotal)
+
+    return sumtotal / sumweight
 
 
-def d(ranked, k):
-    newRank = []
+def d(ranked, maxnum):
+    newrank = []
     for l in range(maxS):
-        newRankLine = []
+        newrankline = []
         for m in range(maxS):
             if l == m:
                 result = 0
             else:
-                result = heapD(ranked[l], ranked[m], k)
-            newRankLine.append([result, m])
-        newRank.append(newRankLine)
-    return newRank
+                result = 1 / (1 + heapd(ranked[l], ranked[m], maxnum))
+            newrankline.append([result, ranked[m][0][1]])
+        newrank.append(newrankline)
+    return newrank
 
 
-def efficiency(rList):
-    recall = 0
-
+def efficiency(rlist):
     # pegar k primeiras imagens de rList[i],
-    # e verificar quantos idx estão no range do i (for de 20 em vinte, e dentro um que varie de um em um, i*j)
+    # e verificar quantos idx estao no range do i (for de 20 em vinte, e dentro um que varie de um em um, i*j)
     # com base no index, preciso de uma funcao para verificar a classe. mod??
     p = 20  # precision = intersect k images com as relevantes / k
     r = 40  # recall = intersect k images com as relevantes / 20
 
-    #calcular precisão
-    sumPrec = 0
-    for index, line in enumerate(rList):
+    # calcular precisao
+    sumprec = 0
+    for index, line in enumerate(rlist):
         classe = int(index / 20)
         intersect = 0
         for val in line[:p][1]:
             if int(val / 20) == classe:
                 intersect += 1
-        sumPrec += intersect / p
-    precision = sumPrec / maxS
+        sumprec += intersect / p
+    precision = sumprec / maxS
 
-    #calcular recall
-    sumRec = 0
-    for index, line in enumerate(rList):
+    # calcular recall
+    sumrec = 0
+    for index, line in enumerate(rlist):
         classe = int(index / 20)
         intersect = 0
         for val in line[:r][1]:
             if int(val / 20) == classe:
                 intersect += 1
-        sumRec += intersect / p
-    recall = sumRec / maxS
+        sumrec += intersect / p
+    recall = sumrec / maxS
 
     return precision, recall
-
-
-def maybeSort(line):
-    # adapt to get not value, but key[0]
-    return True
 
 
 if __name__ == "__main__":
@@ -88,28 +125,38 @@ if __name__ == "__main__":
     numReRanks = 1
     k = 20
 
-    f = getFile(1)
-    A = toMatrix(f)
-    rankedList = []
-    for i in range(maxS):
-        lineOrdered = sorted(A[i],key=itemgetter(0))
-        rankedList.append(lineOrdered)
-    eff = efficiency(rankedList)
-    A.clear()
+    for fileNum in range(1, 2, 1):
+        A = tomatrix(getfile(fileNum))
 
-    for t in range(numReRanks):
-        newA = d(rankedList, k)
-        newRankedList = []
+        rankedList = []
         for i in range(maxS):
-            newLineOrdered = sorted(newA[i],key=itemgetter(0))
-            newRankedList.append(newLineOrdered)
-        newEff = efficiency(newRankedList)
-        newA.clear()
+            lineOrdered = sorted(A[i], key=itemgetter(0))
+            rankedList.append(lineOrdered)
+        printf(rankedList[0])
+        eff = efficiency(rankedList)
+    print("First efficiency:")
+    print(eff)
+        A.clear()
 
-        if newEff[0] > eff[0] and newEff[1] > eff[1]:
-            rankedList = list(newRankedList)
-            eff = tuple(newEff)
-        else:
-            print("Ultimo ReRank diminuiu a eficiencia.\nT otimo encontrado: " + str(t))
-            break
+        for t in range(numReRanks):
+            newA = d(rankedList, k)
+            printf(newA[0])
+            newRankedList = []
+            for i in range(maxS):
+                newLineOrdered = sorted(newA[i], key=itemgetter(0))
+                newRankedList.append(newLineOrdered)
+            printf(newRankedList[0])
+            newEff = efficiency(newRankedList)
+            newA.clear()
+
+            if newEff[0] > eff[0] and newEff[1] > eff[1]:
+                rankedList = list(newRankedList)
+                eff = tuple(newEff)
+            else:
+                print("Ultimo ReRank diminuiu a eficiencia.\nT otimo encontrado: " + str(t))
+                break
+
+    print("Last efficiency:")
+    print(eff)
+
     print("\n\nThe End.")
