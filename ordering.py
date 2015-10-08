@@ -122,20 +122,21 @@ def efficiency(rlist):
 
 if __name__ == "__main__":
     maxS = 1400
-    numReRanks = 1
+    numReRanks = 6
     k = 20
 
-    for fileNum in range(1, 2, 1):
-        A = tomatrix(getfile(fileNum))
+    for fileNum in range(1, 7, 1):
+        fil = getfile(fileNum)
+        print("Arquivo" + str(fil.name))
+        A = tomatrix(fil)
 
         rankedList = []
         for i in range(maxS):
             lineOrdered = sorted(A[i], key=itemgetter(0))
             rankedList.append(lineOrdered)
-        printf(rankedList[0])
         eff = efficiency(rankedList)
-    print("First efficiency:")
-    print(eff)
+        print("First efficiency:")
+        print(eff)
         A.clear()
 
         for t in range(numReRanks):
@@ -145,8 +146,9 @@ if __name__ == "__main__":
             for i in range(maxS):
                 newLineOrdered = sorted(newA[i], key=itemgetter(0))
                 newRankedList.append(newLineOrdered)
-            printf(newRankedList[0])
             newEff = efficiency(newRankedList)
+            print("Tentativa " + str(fileNum))
+            print(newEff)
             newA.clear()
 
             if newEff[0] > eff[0] and newEff[1] > eff[1]:
@@ -156,7 +158,7 @@ if __name__ == "__main__":
                 print("Ultimo ReRank diminuiu a eficiencia.\nT otimo encontrado: " + str(t))
                 break
 
-    print("Last efficiency:")
-    print(eff)
+        print("Last efficiency:")
+        print(eff)
 
     print("\n\nThe End.")
