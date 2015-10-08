@@ -8,7 +8,7 @@ __author__ = 'nilso'
 def printf(toprint):
     f = open("results.txt", "a+")
     f.write(str(toprint))
-    f.write("\n")
+    f.write("\n\n")
     f.close()
 
 
@@ -127,7 +127,7 @@ if __name__ == "__main__":
 
     for fileNum in range(1, 7, 1):
         fil = getfile(fileNum)
-        print("Arquivo" + str(fil.name))
+        printf("Arquivo" + str(fil.name))
         A = tomatrix(fil)
 
         rankedList = []
@@ -135,30 +135,29 @@ if __name__ == "__main__":
             lineOrdered = sorted(A[i], key=itemgetter(0))
             rankedList.append(lineOrdered)
         eff = efficiency(rankedList)
-        print("First efficiency:")
-        print(eff)
+        printf("First efficiency:")
+        printf(eff)
         A.clear()
 
         for t in range(numReRanks):
             newA = d(rankedList, k)
-            printf(newA[0])
             newRankedList = []
             for i in range(maxS):
                 newLineOrdered = sorted(newA[i], key=itemgetter(0))
                 newRankedList.append(newLineOrdered)
             newEff = efficiency(newRankedList)
-            print("Tentativa " + str(fileNum))
-            print(newEff)
+            printf("Tentativa " + str(fileNum))
+            printf(newEff)
             newA.clear()
 
             if newEff[0] > eff[0] and newEff[1] > eff[1]:
                 rankedList = list(newRankedList)
                 eff = tuple(newEff)
             else:
-                print("Ultimo ReRank diminuiu a eficiencia.\nT otimo encontrado: " + str(t))
+                printf("Ultimo ReRank diminuiu a eficiencia.\nT otimo encontrado: " + str(t))
                 break
 
-        print("Last efficiency:")
-        print(eff)
+        printf("Last efficiency:")
+        printf(eff)
 
     print("\n\nThe End.")

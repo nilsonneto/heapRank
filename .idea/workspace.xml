@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="300a3b39-0cf9-4c40-981d-4bd069071bd5" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/minmaxheap.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/orderbyNograph.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="DELETED" beforePath="C:\Users\nilso\PycharmProjects\heapRank\minmaxheap.py" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\nilso\PycharmProjects\heapRank\orderbyNograph.py" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ordering.py" afterPath="$PROJECT_DIR$/ordering.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="heapRank.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -29,21 +29,11 @@
       <file leaf-file-name="ordering.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ordering.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.34879032">
-              <caret line="112" column="21" selection-start-line="112" selection-start-column="21" selection-end-line="112" selection-end-column="21" />
+            <state vertical-scroll-proportion="0.40120968">
+              <caret line="149" column="26" selection-start-line="149" selection-start-column="26" selection-end-line="149" selection-end-column="26" />
               <folding>
                 <element signature="e#0#27#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="minmaxheap.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/minmaxheap.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="21" column="43" selection-start-line="21" selection-start-column="43" selection-end-line="21" selection-end-column="43" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -64,6 +54,7 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/minmaxheap.py" />
+        <option value="$PROJECT_DIR$/results.txt" />
         <option value="$PROJECT_DIR$/ordering.py" />
       </list>
     </option>
@@ -307,7 +298,13 @@
       <option name="project" value="LOCAL" />
       <updated>1444323888167</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="metrics work!!">
+      <created>1444326411175</created>
+      <option name="number" value="00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1444326411175</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -349,7 +346,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Implemented basic structure. Only missing heap algorithm." />
     <MESSAGE value="added files" />
-    <option name="LAST_COMMIT_MESSAGE" value="added files" />
+    <MESSAGE value="metrics work!!" />
+    <option name="LAST_COMMIT_MESSAGE" value="metrics work!!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -384,28 +382,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/orderbyNograph.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.27419356">
-          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#12#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/minmaxheap.py">
+    <entry file="file://$PROJECT_DIR$/results.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="21" column="43" selection-start-line="21" selection-start-column="43" selection-end-line="21" selection-end-column="43" />
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ordering.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.34879032">
-          <caret line="112" column="21" selection-start-line="112" selection-start-column="21" selection-end-line="112" selection-end-column="21" />
+        <state vertical-scroll-proportion="0.40120968">
+          <caret line="149" column="26" selection-start-line="149" selection-start-column="26" selection-end-line="149" selection-end-column="26" />
           <folding>
             <element signature="e#0#27#0" expanded="true" />
           </folding>
