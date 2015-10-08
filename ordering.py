@@ -35,9 +35,16 @@ def tomatrix(file):
     return matrix
 
 
+'''
+Historico de mudanca na metrica
+v1: heap vai de 1 ate o fim, interseccao de cada linha, com peso
+v2: heap vai de 1 ate o fim, interseccao de duas linhas, com peso
+v3: heap vai de 0 ate o fim, interseccao de duas linhas, com peso
+'''
+
 def heapd(t1, t2, maxnum):
-    heap1 = t1[1:maxnum]
-    heap2 = t2[1:maxnum]
+    heap1 = t1[:maxnum]
+    heap2 = t2[:maxnum]
 
     maxh = ceil(log2(len(heap1)))
     heights = list(range(1, maxh+1, 2))
@@ -48,6 +55,8 @@ def heapd(t1, t2, maxnum):
 
     for h in heights:
         numelem = pow(2, h)
+        if h == 1:
+            numelem += 1
         if h + 1 <= maxh:
             numelem += pow(2, h+1)
         numelem += lastindex
@@ -128,6 +137,7 @@ if __name__ == "__main__":
     for fileNum in range(1, 7, 1):
         fil = getfile(fileNum)
         printf("Arquivo" + str(fil.name))
+        print("Arquivo" + str(fil.name))
         A = tomatrix(fil)
 
         rankedList = []
@@ -135,8 +145,8 @@ if __name__ == "__main__":
             lineOrdered = sorted(A[i], key=itemgetter(0))
             rankedList.append(lineOrdered)
         eff = efficiency(rankedList)
-        printf("First efficiency:")
-        printf(eff)
+        printf("Eff 0: " + str(eff))
+        print("Eff 0: " + str(eff))
         A.clear()
 
         for t in range(numReRanks):
@@ -146,18 +156,19 @@ if __name__ == "__main__":
                 newLineOrdered = sorted(newA[i], key=itemgetter(0))
                 newRankedList.append(newLineOrdered)
             newEff = efficiency(newRankedList)
-            printf("Tentativa " + str(fileNum))
-            printf(newEff)
+            printf("Eff " + str(t+1) + ": " + str(newEff))
+            print("Eff " + str(t+1) + ": " + str(newEff))
             newA.clear()
 
             if newEff[0] > eff[0] and newEff[1] > eff[1]:
                 rankedList = list(newRankedList)
                 eff = tuple(newEff)
             else:
-                printf("Ultimo ReRank diminuiu a eficiencia.\nT otimo encontrado: " + str(t))
+                printf("Ultimo ReRank diminuiu a eficiencia.\nT otimo encontrado: " + str(t+1))
                 break
 
-        printf("Last efficiency:")
-        printf(eff)
+        printf("Last efficiency: " + str(eff))
+        print("Last efficiency: " + str(eff))
+        print("\n")
 
-    print("\n\nThe End.")
+    print("The End.")

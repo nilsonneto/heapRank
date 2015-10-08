@@ -1,0 +1,106 @@
+ArquivoAIRPreOpt.txt
+
+First efficiency:
+
+(0.0462499999999989, 0.0462499999999989)
+
+Tentativa 0
+
+(0.049142857142855885, 0.049142857142855885)
+
+Tentativa 1
+
+(0.04857142857142734, 0.04857142857142734)
+
+Ultimo ReRank diminuiu a eficiencia.
+T otimo encontrado: 1
+
+Last efficiency:
+
+(0.049142857142855885, 0.049142857142855885)
+
+ArquivoASCPreOpt.txt
+
+First efficiency:
+
+(0.05039285714285581, 0.05039285714285581)
+
+Tentativa 0
+
+(0.04985714285714156, 0.04985714285714156)
+
+Ultimo ReRank diminuiu a eficiencia.
+T otimo encontrado: 0
+
+Last efficiency:
+
+(0.05039285714285581, 0.05039285714285581)
+
+ArquivoBASPreOpt.txt
+
+First efficiency:
+
+(0.0488928571428559, 0.0488928571428559)
+
+Tentativa 0
+
+(0.04764285714285597, 0.04764285714285597)
+
+Ultimo ReRank diminuiu a eficiencia.
+T otimo encontrado: 0
+
+Last efficiency:
+
+(0.0488928571428559, 0.0488928571428559)
+
+ArquivoCFDPreOpt.txt
+
+First efficiency:
+
+(0.04992857142857012, 0.04992857142857012)
+
+Tentativa 0
+
+(0.04960714285714157, 0.04960714285714157)
+
+Ultimo ReRank diminuiu a eficiencia.
+T otimo encontrado: 0
+
+Last efficiency:
+
+(0.04992857142857012, 0.04992857142857012)
+
+ArquivoIDSCPreOpt.txt
+
+First efficiency:
+
+(0.04964285714285585, 0.04964285714285585)
+
+Tentativa 0
+
+(0.04935714285714159, 0.04935714285714159)
+
+Ultimo ReRank diminuiu a eficiencia.
+T otimo encontrado: 0
+
+Last efficiency:
+
+(0.04964285714285585, 0.04964285714285585)
+
+ArquivoSSPreOpt.txt
+
+First efficiency:
+
+(0.03789285714285651, 0.03789285714285651)
+
+Tentativa 0
+
+(0.03564285714285664, 0.03564285714285664)
+
+Ultimo ReRank diminuiu a eficiencia.
+T otimo encontrado: 0
+
+Last efficiency:
+
+(0.03789285714285651, 0.03789285714285651)
+
